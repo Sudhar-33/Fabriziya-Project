@@ -1,0 +1,35 @@
+body {
+  background: #f8f9fa;
+  font-family: Arial, sans-serif;
+  background-color: rgb(0, 0, 0);
+}
+
+/* Card */
+#Shad {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Left side with background image */
+.form-image {
+  background: url("/images/Bg1.jpg") no-repeat center center;
+  background-size: cover;
+  min-height: 100%;
+  
+}
+
+/* Right side (form body) */
+#body {
+  padding: 30px;
+}
+
+h2{
+    color: #f8f9fa;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+label{
+    color: #f8f9fa;
+}
+

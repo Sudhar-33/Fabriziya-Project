@@ -1,0 +1,58 @@
+/* Keep page background simple */
+body {
+  background: #f8f9fa;  /* light gray background */
+  font-family: Arial, sans-serif;
+  background-image: url(/images/S1_PhotoGrid.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-top: 10px;
+  
+}
+
+/* Card with background image */
+#Shad {
+  position: relative;
+  background: url("") no-repeat center center;
+  background-size: cover;
+  border-radius: 20px;
+  overflow: hidden; /* ensures overlay stays inside card */
+  color: white; /* text color */
+  width: 75%;
+  left: 10%;
+}
+
+/* Overlay inside the card */
+#Shad::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+  z-index: 1;
+}
+
+/* Card body should be above overlay */
+#body {
+  position: relative;
+  z-index: 2;
+}
+
+/* Inputs: white background so they're clear */
+.form-control {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+}
+
+label{
+  font-family:'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
+h2{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
+
+
+

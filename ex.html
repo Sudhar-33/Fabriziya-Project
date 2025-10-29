@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabrizia - Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2e8b57;
+            --primary-light: #3cb371;
+            --primary-dark: #1f6b42;
+            --accent-color: #ff6b6b;
+            --text-dark: #333;
+            --text-light: #777;
+            --bg-light: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #2e8b57 0%, #3cb371 100%);
+            --gradient-accent: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: none;
+            animation: modalAppear 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        
+        @keyframes modalAppear {
+            0% {
+                transform: scale(0.8) translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            background: var(--gradient-primary);
+            color: white;
+            border-bottom: none;
+            padding: 2rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .modal-title {
+            font-weight: 700;
+            font-size: 2rem;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+        
+        .btn-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            z-index: 10;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            padding: 10px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .btn-close:hover {
+            opacity: 1;
+            transform: rotate(90deg);
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .modal-body {
+            padding: 2.5rem;
+            background: white;
+        }
+        
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-floating {
+            margin-bottom: 1.5rem;
+            position: relative;
+            animation: formSlideIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .form-floating:nth-child(1) { animation-delay: 0.1s; }
+        .form-floating:nth-child(2) { animation-delay: 0.2s; }
+        .form-floating:nth-child(3) { animation-delay: 0.3s; }
+        .form-floating:nth-child(4) { animation-delay: 0.4s; }
+        .form-floating:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes formSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-control {
+            border-radius: 12px;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e9ecef;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(46, 139, 87, 0.15);
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        .form-label {
+            color: #6c757d;
+            font-weight: 500;
+            padding-left: 3rem;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            z-index: 5;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus + .input-icon {
+            color: var(--primary-dark);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+            z-index: 5;
+            transition: var(--transition);
+        }
+        
+        .password-toggle:hover {
+            color: var(--primary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .validation-message {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            padding-left: 3rem;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .btn-submit {
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: white;
+            width: 100%;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+            margin-top: 1rem;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.4);
+        }
+        
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+        
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-submit:hover::before {
+            left: 100%;
+        }
+        
+        .progress-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-step {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e9ecef;
+            margin: 0 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .progress-step.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+        
+        .progress-step.completed::after {
+            content: '✓';
+            position: absolute;
+            top: -2px;
+            left: 2px;
+            color: white;
+            font-size: 0.7rem;
+        }
+        
+        .terms-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .terms-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .terms-text a:hover {
+            text-decoration: underline;
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            animation: bounceIn 1s ease;
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .success-message h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .success-message p {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+        }
+        
+        .decoration-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .decoration-1 {
+            top: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .decoration-2 {
+            bottom: -40px;
+            left: -40px;
+            width: 80px;
+            height: 80px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .modal-body {
+                padding: 1.5rem;
+            }
+            
+            .modal-title {
+                font-size: 1.7rem;
+            }
+        }
+        
+        .floating-label {
+            transition: var(--transition);
+        }
+        
+        .form-control:focus ~ .floating-label,
+        .form-control:not(:placeholder-shown) ~ .floating-label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Registration Modal -->
+<section>
+    <div class="modal fade" id="modalExa" tabindex="-1" aria-labelledby="modalExaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 600px;">
+            <div class="modal-content">
+                <!-- Decorative elements -->
+                <div class="decoration-element decoration-1"></div>
+                <div class="decoration-element decoration-2"></div>
+                
+                <!-- Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalExaLabel">
+                        <i class="fas fa-user-plus me-2"></i>Join Fabrizia
+                    </h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <!-- Body -->
+                <div class="modal-body">
+                    <!-- Progress Indicator -->
+                    <div class="progress-indicator">
+                        <div class="progress-step active" data-step="1"></div>
+                        <div class="progress-step" data-step="2"></div>
+                        <div class="progress-step" data-step="3"></div>
+                        <div class="progress-step" data-step="4"></div>
+                    </div>
+                    
+                    <!-- Registration Form -->
+                    <div class="form-container" id="registrationForm">
+                        <form id="F1">
+                            <!-- Name Field -->
+                            <div class="form-floating">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" name="username" class="form-control" id="name" placeholder="Enter Your Name" required>
+                                <label for="name" class="floating-label">Full Name</label>
+                                <span class="validation-message text-danger" id="nameus"></span>
+                            </div>
+
+                            <!-- Mobile Field -->
+                            <div class="form-floating">
+                                <i class="fas fa-phone input-icon"></i>
+                                <input type="tel" name="mobile" class="form-control" id="num" placeholder="+91" required>
+                                <label for="num" class="floating-label">Mobile Number</label>
+                                <span class="validation-message text-danger" id="mobile"></span>
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="form-floating">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com" required>
+                                <label for="email" class="floating-label">Email Address</label>
+                                <span class="validation-message text-danger" id="mail"></span>
+                            </div>
+                            
+                            <!-- Password Field -->
+                            <div class="form-floating">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" name="password" class="form-control" id="pass" placeholder="Password" required>
+                                <button type="button" class="password-toggle" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <label for="pass" class="floating-label">Password</label>
+                                <span class="validation-message text-danger" id="passwordp"></span>
+                            </div>
+
+                            <!-- Confirm Password Field -->
+                            <div class="form-floating">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" name="repassword" class="form-control" id="repass" placeholder="ReType Password" required>
+                                <button type="button" class="password-toggle" id="toggleConfirmPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <label for="repass" class="floating-label">Confirm Password</label>
+                                <span class="validation-message text-danger" id="repasswordp"></span> 
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <div class="d-grid">
+                                <button type="submit" id="btn" class="btn-submit">
+                                    <span class="btn-text">Create Account</span>
+                                    <i class="fas fa-spinner fa-spin d-none"></i>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <!-- Terms Text -->
+                        <div class="terms-text">
+                            By creating an account, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Success Message (Hidden by default) -->
+                    <div class="success-message" id="successMessage">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Welcome to Fabrizia!</h3>
+                        <p>Your account has been created successfully. You can now explore our exclusive collection of sarees.</p>
+                        <button class="btn-submit" data-bs-dismiss="modal">
+                            Continue Shopping
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get modal element
+        const modal = document.getElementById('modalExa');
+        
+        // Show modal on page load for demo purposes
+        const modalInstance = new bootstrap.Modal(modal);
+        modalInstance.show();
+        
+        // Password toggle functionality
+        const togglePassword = document.getElementById('togglePassword');
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        const passwordInput = document.getElementById('pass');
+        const confirmPasswordInput = document.getElementById('repass');
+        
+        if (togglePassword) {
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+        }
+        
+        if (toggleConfirmPassword) {
+            toggleConfirmPassword.addEventListener('click', function() {
+                const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                confirmPasswordInput.setAttribute('type', type);
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+        }
+        
+        // Form validation
+        const form = document.getElementById('F1');
+        const submitBtn = document.getElementById('btn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const spinner = submitBtn.querySelector('.fa-spinner');
+        
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value.trim();
+                const mobile = document.getElementById('num').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('pass').value.trim();
+                const repassword = document.getElementById('repass').value.trim();
+                
+                // Validation flags
+                let isValid = true;
+                
+                // Clear previous error messages
+                document.querySelectorAll('.validation-message').forEach(el => {
+                    el.textContent = '';
+                });
+                
+                // Name validation
+                if (name === '') {
+                    document.getElementById('nameus').textContent = 'Please enter your name';
+                    isValid = false;
+                    animateError(document.getElementById('name'));
+                }
+                
+                // Mobile validation
+                const mobileRegex = /^[6-9]\d{9}$/;
+                if (!mobileRegex.test(mobile)) {
+                    document.getElementById('mobile').textContent = 'Please enter a valid 10-digit mobile number';
+                    isValid = false;
+                    animateError(document.getElementById('num'));
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    document.getElementById('mail').textContent = 'Please enter a valid email address';
+                    isValid = false;
+                    animateError(document.getElementById('email'));
+                }
+                
+                // Password validation
+                if (password.length < 6) {
+                    document.getElementById('passwordp').textContent = 'Password must be at least 6 characters';
+                    isValid = false;
+                    animateError(document.getElementById('pass'));
+                }
+                
+                // Confirm password validation
+                if (password !== repassword) {
+                    document.getElementById('repasswordp').textContent = 'Passwords do not match';
+                    isValid = false;
+                    animateError(document.getElementById('repass'));
+                }
+                
+                // If form is valid, simulate submission
+                if (isValid) {
+                    // Show loading state
+                    btnText.textContent = 'Creating Account...';
+                    spinner.classList.remove('d-none');
+                    submitBtn.disabled = true;
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        // Hide form and show success message
+                        document.getElementById('registrationForm').style.display = 'none';
+                        document.getElementById('successMessage').style.display = 'block';
+                        
+                        // Update progress steps
+                        document.querySelectorAll('.progress-step').forEach(step => {
+                            step.classList.add('completed', 'active');
+                        });
+                    }, 2000);
+                }
+            });
+        }
+        
+        // Error animation function
+        function animateError(element) {
+            element.style.borderColor = 'var(--accent-color)';
+            element.classList.add('shake');
+            
+            setTimeout(() => {
+                element.classList.remove('shake');
+            }, 500);
+        }
+        
+        // Add shake animation to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .shake {
+                animation: shake 0.5s ease-in-out;
+            }
+            
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-5px); }
+                40%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Progress indicator update on input focus
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach((input, index) => {
+            input.addEventListener('focus', function() {
+                document.querySelectorAll('.progress-step').forEach((step, stepIndex) => {
+                    if (stepIndex <= index) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>

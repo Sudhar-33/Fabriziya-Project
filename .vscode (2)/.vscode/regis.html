@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Fabrizia</title>
+  <link rel="stylesheet" href="pro.css">
+  <style>
+    /* Keep page background simple */
+body {
+  background: #f8f9fa;  /* light gray background */
+  font-family: Arial, sans-serif;
+  background-image: url("/image/S1_PhotoGrid.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-top: 100px;
+  
+}
+  #modalExample{
+      background-image: url('/image/S1_PhotoGrid.png');
+      background-position: center;
+      background-size: cover;
+    }
+/* Card with background image */
+#Shad {
+  position: relative;
+  background: url("") no-repeat center center;
+  background-size: cover;
+  border-radius: 20px;
+  overflow: hidden; /* ensures overlay stays inside card */
+  color: white; /* text color */
+  width: 75%;
+  left: 10%;
+}
+
+/* Overlay inside the card */
+#Shad::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+  z-index: 1;
+}
+
+/* Card body should be above overlay */
+#body {
+  position: relative;
+  z-index: 2;
+}
+
+/* Inputs: white background so they're clear */
+.form-control {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+}
+
+label{
+  font-family:'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
+h2{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5" id="con">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg rounded-4" id="Shad">
+          <div class="card-body" id="body">
+            <h2 class="text-center mb-4">Sign Up</h2>
+
+
+            <form action="Feb" id="F1">
+            
+             <div class="mb-3">
+                <label for="username" class="form-label">Name</label>
+                <input type="text" name="username" class="form-control" id="name" placeholder="Enter Your Name">
+                <p id="nameus"></p>
+              </div>
+
+              <div class="mb-3">
+                <label for="mobile" class="form-label" pattern="/^[6-9]\d{9}$/">Mobile No</label>
+                <input type="number" name="mobile" class="form-control" id="num" placeholder="+91">
+                <p id="mobile"></p>
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com">
+                <p id="mail"></p>
+              </div>
+
+              <div class="mb-3">
+                <label for="pass" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="pass">
+                <p id="passwordp"></p>
+              </div>
+
+              <div class="mb-3">
+                <label for="repass" class="form-label">ReType Password</label>
+                <input type="password" name="repassword" class="form-control" id="repass">
+                <p id="repasswordp"></p> 
+              </div>
+              
+              <div class="d-grid">
+                <button type="submit" id="btn" class="btn btn-success">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Correct script link -->
+  <script>
+    let butt = document.getElementById('btn');
+
+let namep   = document.getElementById('nameus');
+let mno     = document.getElementById('mobile');
+let emp     = document.getElementById('mail');
+let passp   = document.getElementById('passwordp');
+let repassp = document.getElementById('repasswordp');
+
+butt.addEventListener('click', (e) => {
+  e.preventDefault(); // prevent form refresh
+
+  let nameId     = document.getElementById('name').value.trim();       
+  let mobile_no  = document.getElementById('num').value.trim();
+  let ema        = document.getElementById('email').value.trim();
+  let password   = document.getElementById('pass').value.trim();
+  let repassword = document.getElementById('repass').value.trim();
+
+  // regex
+  let mobileRegex = /^[6-9]\d{9}$/;
+  let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+  let isValid = true; // flag
+
+  // Name check
+  if (nameId === "") {
+    namep.innerText = "Enter the name";
+    namep.style.color = "red";
+    isValid = false;
+  }
+
+  // Mobile check
+  if (mobile_no === "") {
+    mno.innerText = "Enter the mobile number";
+    mno.style.color = "red";
+    isValid = false;
+  } else if (!mobileRegex.test(mobile_no)) {
+    mno.innerText = "Enter a valid 10-digit mobile number";
+    mno.style.color = "red";
+    isValid = false;
+  }
+
+  // Email check
+  if (ema === "") {
+    emp.innerText = "Enter your email";
+    emp.style.color = "red";
+    isValid = false;
+  } else if (!emailRegex.test(ema)) {
+    emp.innerText = "Enter a valid email (e.g. example@gmail.com)";
+    emp.style.color = "red";
+    isValid = false;
+  }
+
+  // Password check
+  if (password === "") {
+    passp.innerText = "Enter password";
+    passp.style.color = "red";
+    isValid = false;
+  }
+
+  if (repassword === "") {
+    repassp.innerText = "Re-enter the password";
+    repassp.style.color = "red";
+    isValid = false;
+  } else if (password !== repassword) {
+    repassp.innerText = "Passwords do not match";
+    repassp.style.color = "red";
+    isValid = false;
+  }
+
+  // Final submit
+  if (isValid) {
+    alert("Form submitted successfully!");
+    document.getElementById('F1').reset(); // clear form
+  }
+});
+
+  </script>
+</body>
+</html>

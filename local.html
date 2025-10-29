@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // local storage
+        // Store data
+localStorage.setItem("username", "Dhoni");
+
+// Get data
+let user = localStorage.getItem("username");
+console.log(user); // Output: Dhoni
+
+// Remove a specific item
+// localStorage.removeItem("username");
+
+// Clear everything
+// localStorage.clear();
+
+//session storage
+
+// Store data
+sessionStorage.setItem("userId", "12345");
+
+// Get data
+let id = sessionStorage.getItem("userId");
+console.log(id); // Output: 12345
+
+// Remove a specific item
+// sessionStorage.removeItem("userId");
+
+// Clear everything
+// sessionStorage.clear();
+
+
+    </script>
+</body>
+</html>

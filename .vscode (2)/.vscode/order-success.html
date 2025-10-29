@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation | FabProject</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #4e54c8;
+      --secondary-color: #8f94fb;
+      --success-color: #28a745;
+      --light-bg: #f8f9fa;
+      --dark-text: #343a40;
+    }
+    
+    body {
+      background: linear-gradient(135deg, var(--light-bg) 0%, #e9ecef 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    
+    .confirmation-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    .confirmation-header {
+      background: linear-gradient(135deg, var(--success-color) 0%, var(--success-color) 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .confirmation-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    
+    .confirmation-body {
+      background: white;
+      padding: 2rem;
+    }
+    
+    .order-details {
+      background-color: var(--light-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #dee2e6;
+    }
+    
+    .detail-item:last-child {
+      border-bottom: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .customer-info {
+      background-color: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      border: 1px solid #dee2e6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .info-row {
+      display: flex;
+      margin-bottom: 1rem;
+    }
+    
+    .info-label {
+      font-weight: 600;
+      width: 150px;
+      color: var(--dark-text);
+    }
+    
+    .info-value {
+      flex: 1;
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--primary-color);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.25rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary-color);
+    }
+    
+    .timeline-item.active::before {
+      background: var(--success-color);
+      box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3);
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .btn-primary-custom {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      border: none;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      transition: all 0.3s;
+      flex: 1;
+    }
+    
+    .btn-primary-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(78, 84, 200, 0.3);
+    }
+    
+    .btn-outline-custom {
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      transition: all 0.3s;
+      flex: 1;
+    }
+    
+    .btn-outline-custom:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .estimated-delivery {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    
+    .delivery-icon {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .confirmation-container {
+        margin: 1rem;
+      }
+      
+      .confirmation-body {
+        padding: 1.5rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .info-row {
+        flex-direction: column;
+      }
+      
+      .info-label {
+        width: 100%;
+        margin-bottom: 0.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="confirmation-container">
+    <div class="confirmation-header">
+      <div class="confirmation-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h1 class="display-5 fw-bold">Order Confirmed!</h1>
+      <p class="lead mb-0">Thank you for your purchase. Your order has been successfully placed.</p>
+    </div>
+    
+    <div class="confirmation-body">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="order-details">
+            <h4 class="mb-3"><i class="fas fa-shopping-bag me-2"></i>Order Details</h4>
+            <div class="detail-item">
+              <span>Product:</span>
+              <span id="productName" class="fw-bold">Product Name</span>
+            </div>
+            <div class="detail-item">
+              <span>Price:</span>
+              <span>₹<span id="productPrice" class="fw-bold">0.00</span></span>
+            </div>
+            <div class="detail-item">
+              <span>Payment Method:</span>
+              <span id="paymentMethod" class="fw-bold">Payment Method</span>
+            </div>
+            <div class="detail-item">
+              <span>Order Total:</span>
+              <span>₹<span id="orderTotal" class="fw-bold">0.00</span></span>
+            </div>
+          </div>
+          
+          <div class="customer-info">
+            <h4 class="mb-3"><i class="fas fa-user me-2"></i>Customer Information</h4>
+            <div class="info-row">
+              <div class="info-label">Full Name:</div>
+              <div class="info-value" id="fullName">Customer Name</div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Email:</div>
+              <div class="info-value" id="email">customer@example.com</div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Phone:</div>
+              <div class="info-value" id="phone">+91 98765 43210</div>
+            </div>
+            <div class="info-row">
+              <div class="info-label">Shipping Address:</div>
+              <div class="info-value" id="address">Customer Address</div>
+            </div>
+            <div id="paymentIdContainer" class="info-row" style="display: none;">
+              <div class="info-label">Payment ID:</div>
+              <div class="info-value" id="paymentId">Payment ID</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <h5 class="mb-3"><i class="fas fa-truck me-2"></i>Order Status</h5>
+          <div class="timeline">
+            <div class="timeline-item active">
+              <h6 class="mb-1">Order Confirmed</h6>
+              <p class="text-muted small mb-0">Your order has been confirmed</p>
+            </div>
+            <div class="timeline-item">
+              <h6 class="mb-1">Processing</h6>
+              <p class="text-muted small mb-0">We're preparing your order</p>
+            </div>
+            <div class="timeline-item">
+              <h6 class="mb-1">Shipped</h6>
+              <p class="text-muted small mb-0">Your order is on the way</p>
+            </div>
+            <div class="timeline-item">
+              <h6 class="mb-1">Delivered</h6>
+              <p class="text-muted small mb-0">Expected delivery</p>
+            </div>
+          </div>
+          
+          <div class="estimated-delivery">
+            <div class="delivery-icon">
+              <i class="fas fa-shipping-fast"></i>
+            </div>
+            <h5>Estimated Delivery</h5>
+            <p class="fw-bold mb-0" id="deliveryDate">Calculating...</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="action-buttons">
+        <button class="btn btn-primary-custom" onclick="printOrder()">
+          <i class="fas fa-print me-2"></i>Print Receipt
+        </button>
+        <button class="btn btn-outline-custom" onclick="trackOrder()">
+          <i class="fas fa-map-marker-alt me-2"></i>Track Order
+        </button>
+        <button class="btn btn-outline-custom" onclick="continueShopping()">
+          <i class="fas fa-shopping-cart me-2"></i>
+          <a href="Sale.html">Continue Shopping</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get order details from localStorage
+    const order = JSON.parse(localStorage.getItem("orderDetails"));
+    
+    if (order) {
+      // Display order details
+      document.getElementById("productName").innerText = order.productName || "Product Name";
+      
+      // Get price from localStorage or order object
+      let price = localStorage.getItem("selectedPrice");
+      const finalPrice = price ? Number(price) : Number(order.finalPrice || order.productPrice || 0);
+      
+      document.getElementById("productPrice").innerText = finalPrice.toFixed(2);
+      document.getElementById("orderTotal").innerText = finalPrice.toFixed(2);
+      document.getElementById("paymentMethod").innerText = order.payment || "Payment Method";
+      document.getElementById("fullName").innerText = order.name || "Customer Name";
+      document.getElementById("address").innerText = order.address || "Customer Address";
+      
+      // Display additional customer info if available
+      if (order.email) {
+        document.getElementById("email").innerText = order.email;
+      }
+      
+      if (order.phone) {
+        document.getElementById("phone").innerText = order.phone;
+      }
+      
+      // Show payment ID if available
+      if (order.paymentId) {
+        document.getElementById("paymentIdContainer").style.display = "flex";
+        document.getElementById("paymentId").innerText = order.paymentId;
+      }
+      
+      // Calculate estimated delivery date (3-5 days from now)
+      const deliveryDate = new Date();
+      deliveryDate.setDate(deliveryDate.getDate() + Math.floor(Math.random() * 3) + 3);
+      
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById("deliveryDate").innerText = deliveryDate.toLocaleDateString('en-IN', options);
+    } else {
+      // If no order details found, show a message
+      document.getElementById("productName").innerText = "No order details found";
+    }
+  });
+  
+  function printOrder() {
+    window.print();
+  }
+  
+  function trackOrder() {
+    alert("Order tracking feature will be available soon!");
+  }
+  
+  function continueShopping() {
+    window.location.href = "index.html"; // Change to your main store page
+  }
+</script>
+
+</body>
+</html>

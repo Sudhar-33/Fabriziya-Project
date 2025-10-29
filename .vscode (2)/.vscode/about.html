@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Fabrizia Sarees</title>
+  <link rel="icon" href="/image/fab.jpg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+   <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+    }
+      #modalExample{
+      background-image: url('/image/S1_PhotoGrid.png');
+      background-position: center;
+      background-size: cover;
+    }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(175, 98, 98, 0.6)),
+                  url('https://i.ibb.co/fQdy7P3/saree-bg.jpg') center/cover no-repeat;
+      color: white;
+      padding: 120px 20px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .highlight {
+      color: #d4af37; /* golden */
+      font-weight: bold;
+    }
+    .section-heading {
+      font-weight: bold;
+      font-size: 2rem;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-heading::after {
+      content: "";
+      width: 60px;
+      height: 3px;
+      background: #d4af37;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -10px;
+    }
+    .icon-box {
+      text-align: center;
+      padding: 25px;
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .icon-box:hover {
+      transform: translateY(-5px);
+    }
+    .icon-box i {
+      font-size: 45px;
+      color: #d4af37;
+      margin-bottom: 15px;
+    }
+    .timeline {
+      position: relative;
+      padding: 40px 0;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: #d4af37;
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px;
+    }
+    .timeline-item.left {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-item.right {
+      left: 50%;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background: #d4af37;
+      border-radius: 50%;
+      left: -10px;
+    }
+    .timeline-item.right::before {
+      left: -10px;
+    }
+    footer {
+      background: #111;
+      color: #ddd;
+      padding: 20px 0;
+    }
+   
+     /* Brand font */
+
+     :root {
+            --primary-color: #2e8b57;
+            --primary-light: #3cb371;
+            --primary-dark: #1f6b42;
+            --accent-color: #ff6b6b;
+            --text-dark: #333;
+            --text-light: #777;
+            --bg-light: #f8f9fa;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 100px;
+            background-color: #fefefe;
+        }
+    /* Brand font */
+  
+
+    /* Hero Carousel */
+    .carousel-item {
+      transition: transform 0.6s ease-in-out;
+    }
+    
+    .carousel-img {
+      height: 120vh;
+      object-fit: cover;
+    }
+    
+    /* Card hover effects */
+    .hover-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .hover-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    }
+
+    .hover-card img {
+      transition: transform 0.5s ease;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .hover-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .overlay-text {
+      position: absolute;
+      right: 20px;
+      opacity: 0;
+      transition: opacity 0.5s ease, bottom 0.5s ease;
+    }
+
+    .hover-card:hover .overlay-text {
+      opacity: 1;
+      top: 30px;
+    }
+
+    .btn-primary{
+      opacity: 0;
+      transition: opacity 0.5s ease, bottom 0.5s ease;
+    }
+    
+    .hover-card:hover .btn-primary{
+      opacity: 1;
+      margin-top: 30px;
+      margin-right: 50px;
+    }
+    
+    /* Welcome section */
+    .welcome-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 4rem 0;
+    }
+    
+    /* Testimonial carousel */
+    .testimonial-card {
+      background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Footer styling */
+    footer {
+      background: linear-gradient(135deg, #343a40 0%, #212529 100%);
+    }
+    
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.8rem;
+      }
+      
+      #searchInput {
+        width: 100%;
+        margin-top: 10px;
+      }
+      
+      .carousel-img {
+        height: 40vh;
+      }
+      
+      .hover-card img {
+        height: 250px;
+      }
+      
+      .welcome-section h4 {
+        font-size: 1rem;
+      }
+      
+      .nav-link {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+      
+      .carousel-img {
+        height: 30vh;
+      }
+      
+      .hover-card {
+        width: 100% !important;
+      }
+      
+      .card-img-top {
+        height: 200px;
+      }
+    }
+    
+    /* Animation classes */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .slide-in-left {
+      opacity: 0;
+      animation: slideInLeft 1s ease forwards;
+    }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .slide-in-right {
+      opacity: 0;
+      animation: slideInRight 1s ease forwards;
+    }
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    /* Pulse animation for CTA buttons */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    /* Modal styling */
+    #formId{
+      border: 2px solid green;
+    }
+    
+    .signinmodal{
+      width:100% !important;
+      margin: 0;
+    }
+    
+    #modalExample{
+      background-image: url('/image/S1_PhotoGrid.png');
+      background-position: center;
+      background-size: cover;
+    }
+    
+    /* Loading animation */
+    .loading-spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* General smooth entrance */
+.animated-navbar {
+  animation: fadeDown 0.8s ease-in-out;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+   
+            .navbar {
+           background: rgb(236, 231, 232);
+            box-shadow: var(--shadow);
+            padding: 0.8rem 0;
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 2.2rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .navbar-brand::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 80%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
+            border-radius: 3px;
+        }
+        
+        /* Search Bar - Larger */
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+            margin-left: 24px;
+        }
+        
+        .search-input {
+            border-radius: 50px;
+            padding: 14px 25px;
+            padding-right: 80px;
+            border: 1px solid #e0e0e0;
+            background-color: #f8f9fa;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 1.1rem;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(46, 139, 87, 0.15);
+            background-color: white;
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            width: 46px;
+            height: 46px;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 4px 12px rgba(46, 139, 87, 0.4);
+        }
+        
+        /* Nav Links - Larger */
+        .nav-link {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: var(--text-dark) !important;
+            margin: 0 10px;
+            position: relative;
+            transition: var(--transition);
+            padding: 10px 15px !important;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+            transition: var(--transition);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+        /* Dropdown */
+        .dropdown-menu {
+            border: none;
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            padding: 10px 0;
+            margin-top: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .dropdown-item {
+            padding: 10px 20px;
+            transition: var(--transition);
+            font-size: 1.05rem;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(46, 139, 87, 0.1);
+            color: var(--primary-color);
+            padding-left: 25px;
+        }
+        
+        /* Icons - Larger and More Animated */
+        .icon-container {
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon-container:hover {
+            transform: translateY(-5px);
+            background: rgba(46, 139, 87, 0.05);
+        }
+        
+        .icon-badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        .icon-label {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            color: var(--text-light);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .icon-container:hover .icon-label {
+            color: var(--primary-color);
+        }
+        
+        .icon-container i {
+            font-size: 1.6rem;
+            transition: var(--transition);
+        }
+        
+        .icon-container:hover i {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        /* Cart Icon Animation */
+        .cart-icon:hover i {
+            animation: cartShake 0.5s ease;
+              color: #ff6b6b !important;
+        }
+        
+        /* Wishlist Icon Animation */
+        .wishlist-icon:hover i {
+            animation: heartBeat 0.8s ease;
+            color: #ff6b6b !important;
+        }
+        
+        /* User Icon Animation */
+        .user-icon:hover i {
+            animation: userBounce 0.6s ease;
+              color: #ff6b6b !important;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes cartShake {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+        
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes userBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 15px;
+                box-shadow: var(--shadow);
+            }
+            
+            .search-container {
+                margin-bottom: 15px;
+            }
+            
+            .icon-container {
+                margin: 10px 15px;
+                width: 100px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Demo Content */
+        .demo-content {
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+        
+        .demo-content h1 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        /* Icons Container */
+        .icons-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: none;
+            animation: modalAppear 0.5s ease-out;
+        }
+        
+        @keyframes modalAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(to right, var(--light-bg), white);
+            padding: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .modal-title {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .modal-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+   .modal-header {
+            background: linear-gradient(to right, var(--light-bg), white);
+            padding: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .modal-title {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .modal-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .btn-close {
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+          
+        @keyframes modalAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+         .img-fluid {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .img-fluid:hover {
+            transform: scale(1.03);
+        }
+        
+        .modal-footer {
+            background: linear-gradient(to right, var(--light-bg), white);
+            padding: 1.5rem;
+        }
+        
+        .btn-light {
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-light:hover {
+            color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        
+        .btn-light::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-light:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .input-group {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+            color: #6c757d;
+            z-index: 5;
+        }
+        
+        .form-floating>.form-control {
+            padding-left: 2.5rem;
+        }
+              .form-floating>label {
+            padding-left: 2.5rem;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+            z-index: 5;
+        }
+        
+        .floating-label {
+            transition: var(--transition);
+        }
+        
+        .form-control:focus ~ .floating-label,
+        .form-control:not(:placeholder-shown) ~ .floating-label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: var(--primary-color);
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .facebook {
+            background: #3b5998;
+        }
+        
+        .google {
+            background: #dd4b39;
+        }
+        
+        .twitter {
+            background: #1da1f2;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e1e5eb;
+        }
+        
+        .divider-text {
+            padding: 0 1rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        /* Animation for form elements */
+        .form-floating {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Stagger animation for form elements */
+        .form-floating:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .form-floating:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .form-check {
+            animation-delay: 0.3s;
+        }
+        
+        .btn-danger {
+            animation-delay: 0.4s;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .col-md-5 {
+                display: none;
+            }
+        }
+
+/* Nav link hover underline effect */
+
+/* Scroll shadow */
+
+
+
+    
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="height: 140px;">
+        <div class="container-fluid">
+            <!-- Logo / Brand -->
+             <div class="mx-3">
+               <a class="navbar-brand me-4 " href="#">
+                Fabrizia
+            </a>
+             </div>
+         
+            
+            <!-- Toggler button for mobile -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navbar content -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Search Form -->
+                <form class="d-flex search-container mb-3 mb-lg-0 me-lg-4" role="search">
+                    <input class="form-control search-input" type="search" id="searchInput"
+                     placeholder="Search for sarees, fabrics and, and more..." aria-label="Search">
+                    <button class="btn search-btn" type="submit">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </form>
+                
+                <!-- Navbar links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex gap-4" style="margin-left: 30px;">
+                    <li class="nav-item text-white">
+                        <a class="nav-link active" href="Sale.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="sareeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Saree Collections
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="sareeDropdown">
+                            <li><a class="dropdown-item" href="kanjivara.html">Kanjeevaram Sarees</a></li>
+                            <li><a class="dropdown-item" href="mysore.html">Mysore Silk</a></li>
+                            <li><a class="dropdown-item" href="banarasi.html">Banarasi Sarees</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-success fw-semibold" href="#">View All Collections</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                
+                <!-- Icons -->
+                <div class="icons-container" >
+                    <!-- Cart -->
+                    <div class="icon-container cart-icon mx-2" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                        <i class="fa-solid fa-shopping-bag" style="color: var(--text-dark); font-size: 34px;"></i>
+                        <!-- <span class="icon-badge"></span> -->
+                        <div class="icon-label fs-5">Cart</div>
+                    </div>
+                    
+                    <!-- Wishlist -->
+                    <div class="icon-container wishlist-icon mx-2">
+                        <i class="fa-solid fa-heart" style="color: var(--text-dark); font-size: 34px;"></i>
+                        <!-- <span class="icon-badge"></span> -->
+                        <div class="icon-label fs-5">Wishlist</div>
+                    </div>
+                    
+
+                     <div class="icon-container wishlist-icon mx-2">
+                        <i class="fa-solid fa-clock-rotate-left" style="color: var(--text-dark); font-size: 34px;"></i>
+                        <!-- <span class="icon-badge"></span> -->
+                        <div class="icon-label fs-5">History</div>
+                    </div>   
+
+
+                    <!-- User Account -->
+                    <div class="icon-container user-icon mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="fa-solid fa-user" style="color: var(--text-dark); font-size: 34px;"></i>
+                        <div class="icon-label fs-5" type="button" data-bs-toggle="modal"
+                        data-bs-target="#formId">Account</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+  <!-- Hero -->
+  <section class="hero d-flex flex-column justify-content-center align-items-center bg-light">
+    <h1>About <span class="highlight">Fabrizia</span></h1>
+    <p class="lead">Weaving Culture, Craft, and Elegance Since Generations</p>
+  </section>
+
+  <!-- Legacy Section -->
+  <section class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="/image/FabProject/aboutFab.jpg "   class="rounded shadow" alt="Our Fabrics">
+      </div>
+      <div class="col-md-6">
+        <h2 class="section-heading text-center text-md-start">Our Legacy</h2>
+        <p>
+          India’s <span class="highlight">fabric culture</span> is not just fashion, it’s a living heritage. 
+          From the golden threads of <em>Kanjeevaram</em> to the intricate zari of <em>Banarasi</em> and 
+          the smooth elegance of <em>Mysore silks</em>, each weave is a reflection of devotion, patience, and artistry.  
+        </p>
+        <p>
+          At <strong>Fabrizia</strong>, we honor this legacy. Each saree is more than cloth—it is a story, 
+          a tradition, and a timeless treasure passed from one generation to the next.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center section-heading">Our Values</h2>
+      <div class="row mt-4 g-4">
+        <div class="col-md-4">
+          <div class="icon-box">
+            <i class="fa-solid fa-hand-sparkles"></i>
+            <h5>Authenticity</h5>
+            <p>We preserve traditional weaving methods, ensuring every saree is truly handmade.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="icon-box">
+            <i class="fa-solid fa-feather"></i>
+            <h5>Elegance</h5>
+            <p>Our fabrics are carefully sourced and woven for luxury, comfort, and cultural grace.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="icon-box">
+            <i class="fa-solid fa-heart"></i>
+            <h5>Heritage</h5>
+            <p>Each weave celebrates India’s cultural diversity and timeless artistry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey Timeline -->
+  <section class="container py-5">
+    <h2 class="text-center section-heading">Our Journey</h2>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <h5>1980s - The Beginning</h5>
+        <p>Started as a small family-run handloom business, dedicated to weaving authentic sarees.</p>
+      </div>
+      <div class="timeline-item right">
+        <h5>1995 - Expansion</h5>
+        <p>Introduced Mysore silks and Banarasi weaves to bring cultural variety under one roof.</p>
+      </div>
+      <div class="timeline-item left">
+        <h5>2010 - Global Reach</h5>
+        <p>Began exporting handwoven sarees, sharing India’s culture with the world.</p>
+      </div>
+      <div class="timeline-item right">
+        <h5>2025 - Today</h5>
+        <p>A trusted name in premium ethnic wear, empowering artisans and reviving traditional crafts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="container py-5 text-center">
+    <h2 class="section-heading">Our Mission</h2>
+    <p class="lead">
+      To revive, sustain, and spread the timeless elegance of Indian fabrics, 
+      making sarees not just attire but a proud cultural symbol for generations to come.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p class="mb-0">&copy; 2025 Fabrizia Sarees | Woven with Love & Tradition</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,2924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabrizia - Kanjivara Sarees</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2e8b57;
+            --primary-light: #3cb371;
+            --primary-dark: #1f6b42;
+            --accent-color: #ff6b6b;
+            --text-dark: #333;
+            --text-light: #777;   
+            --bg-light: #f8f9fa;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+      }
+       
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 100px;
+            background-color: white;
+        }
+        
+        .navbar {
+            background: rgb(236, 231, 232);
+            box-shadow: var(--shadow);
+            padding: 0.8rem 0;
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 2.2rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .navbar-brand::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 80%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
+            border-radius: 3px;
+        }
+      
+        .search-container {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+            margin-left: 24px;
+        }
+        
+        .search-input {
+            border-radius: 50px;
+            padding: 14px 25px;
+            padding-right: 80px;
+            border: 1px solid #e0e0e0;
+            background-color: #f8f9fa;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 1.1rem;
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(46, 139, 87, 0.15);
+            background-color: white;
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            width: 46px;
+            height: 46px;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 4px 12px rgba(46, 139, 87, 0.4);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            font-size: 1.3rem;
+            color: var(--text-dark) !important;
+            margin: 0 10px;
+            position: relative;
+            transition: var(--transition);
+            padding: 10px 15px !important;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+            transition: var(--transition);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            padding: 10px 0;
+            margin-top: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .dropdown-item {
+            padding: 10px 20px;
+            transition: var(--transition);
+            font-size: 1.05rem;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(46, 139, 87, 0.1);
+            color: var(--primary-color);
+            padding-left: 25px;
+        }
+        
+        .icon-container {
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon-container:hover {
+            transform: translateY(-5px);
+            background: rgba(236, 243, 239, 0.05);
+        }
+        
+        .icon-badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        .icon-label {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            color: var(--text-light);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .icon-container:hover .icon-label {
+            color: var(--primary-color);
+        }
+        
+        .icon-container i {
+            font-size: 1.6rem;
+            transition: var(--transition);
+        }
+        
+        .icon-container:hover i {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .cart-icon:hover i {
+            animation: cartShake 0.5s ease;
+            color: #ff6b6b !important;
+        }
+        
+        .wishlist-icon:hover i {
+            animation: heartBeat 0.8s ease;
+            color: #ff6b6b !important;
+        }
+        
+        .user-icon:hover i {
+            animation: userBounce 0.6s ease;
+            color: #ff6b6b !important;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes cartShake {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+        
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes userBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 15px;
+                box-shadow: var(--shadow);
+            }
+            
+            .search-container {
+                margin-bottom: 15px;
+            }
+            
+            .icon-container {
+                margin: 10px 15px;
+                width: 100px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.8rem;
+            }
+        }
+        
+        .demo-content {
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+        
+        .demo-content h1 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .icons-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+      
+        .hover-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .hover-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .hover-card:hover img {
+            transform: scale(1.1);
+        }
+       
+        .hover-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .hover-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .hover-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay-btn {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .hover-card:hover .overlay-btn {
+            transform: translateY(0);
+        }
+
+        .wishlist-heart {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .wishlist-heart:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .wishlist-heart i {
+            font-size: 1.2rem;
+            color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .wishlist-heart.active i {
+            color: #ff6b6b;
+        }
+
+        .wishlist-heart:hover i {
+            color: #ff6b6b;
+        }
+
+        .wishlist-heart.animate i {
+            animation: heartPop 0.5s ease;
+        }
+
+        @keyframes heartPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        .wishlist-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1050;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .wishlist-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .cart-modal .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .cart-modal .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            border-bottom: none;
+            padding: 1.5rem;
+        }
+
+        .cart-modal .modal-title {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .cart-modal .modal-body {
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+
+        .cart-item-price {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 0.25rem;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-light);
+        }
+
+        .cart-empty i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+
+        .cart-modal .modal-footer {
+            border-top: 1px solid #eee;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .cart-total-amount {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+
+        .btn-cart-action {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-remove-cart {
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-remove-cart:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-close-cart {
+            background: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-close-cart:hover {
+            background: #5a6268;
+        }
+
+        .btn-continue-shopping {
+            background: var(--primary-light);
+            color: white;
+            border: none;
+        }
+
+        .btn-continue-shopping:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-proceed-checkout {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-proceed-checkout:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .product-modal .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-modal .modal-header {
+            border-bottom: 1px solid #eee;
+            padding: 1.5rem;
+        }
+
+        .product-modal .modal-body {
+            padding: 0;
+        }
+
+        .product-detail-container {
+            display: flex;
+            min-height: 400px;
+        }
+
+        .product-image-section {
+            flex: 1;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .product-image {
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .product-info-section {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+
+        .product-features i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-continue {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-continue:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-buy-now {
+            background: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-buy-now:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .history-modal .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .history-modal .modal-header {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            border-bottom: none;
+            padding: 1.5rem;
+        }
+
+        .history-modal .modal-title {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .history-modal .modal-body {
+            padding: 1.5rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease forwards;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .history-item:nth-child(even) {
+            transform: translateX(20px);
+        }
+
+        .history-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .history-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
+        .history-item-details {
+            flex: 1;
+        }
+
+        .history-item-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+
+        .history-item-price {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .history-item-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .history-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .history-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-light);
+        }
+
+        .history-empty i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+
+        .history-modal .modal-footer {
+            border-top: 1px solid #eee;
+            padding: 1rem 1.5rem;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .wishlist-modal .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .wishlist-modal .modal-header {
+            background: linear-gradient(135deg, #e84393, #fd79a8);
+            color: white;
+            border-bottom: none;
+            padding: 1.5rem;
+        }
+
+        .wishlist-modal .modal-title {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .wishlist-modal .modal-body {
+            padding: 1.5rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .wishlist-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease forwards;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .wishlist-item:nth-child(even) {
+            transform: translateX(20px);
+        }
+
+        .wishlist-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .wishlist-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
+        .wishlist-item-details {
+            flex: 1;
+        }
+
+        .wishlist-item-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+
+        .wishlist-item-price {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .wishlist-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .wishlist-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-light);
+        }
+
+        .wishlist-empty i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+
+        .wishlist-modal .modal-footer {
+            border-top: 1px solid #eee;
+            padding: 1rem 1.5rem;
+        }
+
+        .btn-close-wishlist {
+            background: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        .btn-close-wishlist:hover {
+            background: #5a6268;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail-container {
+                flex-direction: column;
+            }
+            
+            .product-image-section {
+                padding: 1rem;
+            }
+            
+            .product-info-section {
+                padding: 1.5rem;
+            }
+        }
+
+        .product-card {
+            margin-bottom: 2rem;
+        } 
+
+        .modal-header {
+            background: linear-gradient(to right, var(--light-bg), white);
+            padding: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .modal-title {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .modal-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .btn-close {
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+          
+        @keyframes modalAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+         .img-fluid {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .img-fluid:hover {
+            transform: scale(1.03);
+        }
+        
+        .modal-footer {
+            background: linear-gradient(to right, var(--light-bg), white);
+            padding: 1.5rem;
+        }
+        
+        .btn-light {
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-light:hover {
+            color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        
+        .btn-light::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-light:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+      .input-group {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+            color: #6c757d;
+            z-index: 5;
+        }
+        
+        .form-floating>.form-control {
+            padding-left: 2.5rem;
+        }
+              .form-floating>label {
+            padding-left: 2.5rem;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+            z-index: 5;
+        }
+        
+        .floating-label {
+            transition: var(--transition);
+        }
+        
+        .form-control:focus ~ .floating-label,
+        .form-control:not(:placeholder-shown) ~ .floating-label {
+            transform: translateY(-1.5rem) scale(0.85);
+            color: var(--primary-color);
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .facebook {
+            background: #3b5998;
+        }
+        
+        .google {
+            background: #dd4b39;
+        }
+        
+        .twitter {
+            background: #1da1f2;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e1e5eb;
+        }
+        
+        .divider-text {
+            padding: 0 1rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        /* Animation for form elements */
+        .form-floating {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Stagger animation for form elements */
+        .form-floating:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .form-floating:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .form-check {
+            animation-delay: 0.3s;
+        }
+        
+        .btn-danger {
+            animation-delay: 0.4s;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .col-md-5 {
+                display: none;
+            }
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+  #modalExample{
+      background-image: url('/image/S1_PhotoGrid.png');
+      background-position: center;
+      background-size: cover;
+    }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="height: 140px;">
+    <div class="container-fluid">
+        <!-- Logo / Brand -->
+        <div class="mx-3">
+            <a class="navbar-brand me-4 " href="#">
+                Fabrizia
+            </a>
+        </div>
+        
+        <!-- Toggler button for mobile -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Navbar content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Search Form -->
+            <form class="d-flex search-container mb-3 mb-lg-0 me-lg-4" role="search">
+                <input class="form-control search-input" type="search" id="searchInput"
+                     placeholder="Search for sarees, fabrics and, and more..." aria-label="Search">
+                <button class="btn search-btn" type="submit">
+                    <i class="fa-solid fa-search"></i>
+                </button>
+            </form>
+            
+            <!-- Navbar links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex gap-4" style="margin-left: 30px;">
+                <li class="nav-item text-white">
+                    <a class="nav-link active" href="Sale.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="sareeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Saree Collections
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="sareeDropdown">
+                        <li><a class="dropdown-item" href="kanjivara.html">Kanjeevaram Sarees</a></li>
+                        <li><a class="dropdown-item" href="mysore.html">Mysore Silk</a></li>
+                        <li><a class="dropdown-item" href="banarasi.html">Banarasi Sarees</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-success fw-semibold" href="#">View All Collections</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Icons -->
+            <div class="icons-container" >
+                <!-- Cart -->
+                <div class="icon-container cart-icon mx-2" data-bs-toggle="modal" data-bs-target="#cartModal">
+                    <i class="fa-solid fa-shopping-bag" style="color: var(--text-dark); font-size: 34px;"></i>
+                    <span class="icon-badge" id="cartCount">0</span>
+                    <div class="icon-label fs-5">Cart</div>
+                </div>
+                
+                <!-- Wishlist -->
+                <div class="icon-container wishlist-icon mx-2" id="wishlistNavIcon" data-bs-toggle="modal" data-bs-target="#wishlistModal">
+                    <i class="fa-solid fa-heart" style="color: var(--text-dark); font-size: 34px;"></i>
+                    <span class="icon-badge" id="wishlistCount">0</span>
+                    <div class="icon-label fs-5">Wishlist</div>
+                </div>
+                
+                <!-- History -->
+                <div class="icon-container history-icon mx-2" data-bs-toggle="modal" data-bs-target="#historyModal">
+                    <i class="fa-solid fa-clock-rotate-left" style="color: var(--text-dark); font-size: 34px;"></i>
+                    <span class="icon-badge" id="historyCount">0</span>
+                    <div class="icon-label fs-5">History</div>
+                </div>   
+
+                <!-- User Account -->
+                <div class="icon-container user-icon mx-2" data-bs-toggle="modal" data-bs-target="#formId">
+                    <i class="fa-solid fa-user" style="color: var(--text-dark); font-size: 34px;"></i>
+                    <div class="icon-label fs-5">Account</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Toast Notification -->
+<div class="wishlist-toast" id="toastNotification">
+    <span id="toastMessage">Item added to cart!</span>
+</div>
+<!-- Cart Modal -->
+<div class="modal fade cart-modal" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">
+                    <i class="fas fa-shopping-bag me-2"></i>My Shopping Cart
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          
+          
+            <div class="modal-body" id="cartModalBody">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total">
+                    Total: <span class="cart-total-amount" id="cartTotalAmount">₹0</span>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-close-cart me-2" data-bs-dismiss="modal">Continue Shopping</button>
+                   <button type="button" class="btn btn-proceed-checkout " id="proceedCheckoutBtn">
+                    Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product Detail Modal -->
+<div class="modal fade product-modal" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="product-detail-container">
+                    <div class="product-image-section">
+                        <img src="" alt="Product Image" class="product-image" id="productModalImage">
+                    </div>
+                    <div class="product-info-section">
+                        <div>
+                            <h3 class="product-title" id="productModalTitle">Product Name</h3>
+                            <div class="product-price" id="productModalPrice">₹0</div>
+                            <p class="product-description" id="productModalDescription">
+                                This beautiful Kanjeevaram saree features traditional motifs and intricate zari work. 
+                                Made with pure silk and gold threads, it's perfect for weddings and special occasions.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Pure Silk Fabric</li>
+                                <li><i class="fas fa-check"></i> Traditional Zari Work</li>
+                                <li><i class="fas fa-check"></i> Handwoven Craftsmanship</li>
+                                <li><i class="fas fa-check"></i> Premium Quality</li>
+                            </ul>
+                        </div>
+                        <div class="product-actions">
+                            <button type="button" class="btn btn-action btn-continue" data-bs-dismiss="modal">
+                                <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+                            </button>
+                            <button type="button" class="btn btn-action btn-buy-now" id="buyNowBtn">
+                                <i class="fas fa-shopping-bag me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- History Modal -->
+<div class="modal fade history-modal" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="historyModalLabel">
+                    <i class="fas fa-clock-rotate-left me-2"></i>My Purchase History
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="historyModalBody">
+                <!-- History items will be dynamically inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-close-wishlist" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="clearHistoryBtn">Clear All</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Wishlist Modal -->
+<div class="modal fade wishlist-modal" id="wishlistModal" tabindex="-1" aria-labelledby="wishlistModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="wishlistModalLabel">
+                    <i class="fas fa-heart me-2"></i>My Wishlist
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="wishlistModalBody">
+                <!-- Wishlist items will be dynamically inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-close-wishlist" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="clearWishlistBtn">Clear All</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Saree Cards Section -->
+ <!-- section one -->
+
+<section>
+    <div class="container-fluid" style="margin-top: 150px;">
+        <div class="row g-4">
+            <!-- Product 1 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1739355974705-840634.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Traditional Kanjeevaram Saree" data-price="5000" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1739355974705-840634.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Traditional Kanjeevaram Saree" 
+                            data-price="5000"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1739355974705-840634.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹5000</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Traditional Kanjeevaram Saree" 
+                        data-price="5000"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1739355974705-840634.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1688384891409-790785.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Silk Kanjeevaram Saree" data-price="4000" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1688384891409-790785.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Silk Kanjeevaram Saree" 
+                            data-price="4000"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1688384891409-790785.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹4000</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Silk Kanjeevaram Saree" 
+                        data-price="4000"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1688384891409-790785.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1745666516777-92046.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Designer Kanjeevaram Saree" data-price="8000" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1745666516777-92046.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Designer Kanjeevaram Saree" 
+                            data-price="8000"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1745666516777-92046.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹8000</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Designer Kanjeevaram Saree" 
+                        data-price="8000"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1745666516777-92046.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1677504856012-350438.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Bridal Kanjeevaram Saree" data-price="6750" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1677504856012-350438.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Bridal Kanjeevaram Saree" 
+                            data-price="6750"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1677504856012-350438.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹6750</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Bridal Kanjeevaram Saree" 
+                        data-price="6750"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1677504856012-350438.webp">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section two -->
+
+<section>
+    <div class="container-fluid" style="margin-top: 150px;">
+        <div class="row g-4">
+            <!-- Product 5 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1753534481244-541524.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Traditional Kanjeevaram Saree" data-price="3500" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1753534481244-541524.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Traditional Kanjeevaram Saree" 
+                            data-price="3500"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1753534481244-541524.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹3500</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Traditional Kanjeevaram Saree" 
+                        data-price="3500"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1753534481244-541524.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1675511707602-448901.jpg" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Silk Kanjeevaram Saree" data-price="1000" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1675511707602-448901.jpg">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Silk Kanjeevaram Saree" 
+                            data-price="1000"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1675511707602-448901.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹1000</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Silk Kanjeevaram Saree" 
+                        data-price="1000"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1675511707602-448901.jpg">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1758355756304-953181.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Designer Kanjeevaram Saree" data-price="2500" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1758355756304-953181.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Designer Kanjeevaram Saree" 
+                            data-price="2500"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1758355756304-953181.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹2500</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Designer Kanjeevaram Saree" 
+                        data-price="2500"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1758355756304-953181.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1712226921892-217101.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Bridal Kanjeevaram Saree" data-price="7750" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1712226921892-217101.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Bridal Kanjeevaram Saree" 
+                            data-price="7750"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1712226921892-217101.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹7750</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Bridal Kanjeevaram Saree" 
+                        data-price="7750"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1712226921892-217101.webp">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section three -->
+
+<section>
+    <div class="container-fluid" style="margin-top: 150px;">
+        <div class="row g-4">
+            <!-- Product 9 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1711458109707-59450.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Traditional Kanjeevaram Saree" data-price="2500" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1711458109707-59450.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Traditional Kanjeevaram Saree" 
+                            data-price="2500"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1711458109707-59450.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹2500</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Traditional Kanjeevaram Saree" 
+                        data-price="2500"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1711458109707-59450.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 10 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754298418083-43138.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Silk Kanjeevaram Saree" data-price="3000" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754298418083-43138.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Silk Kanjeevaram Saree" 
+                            data-price="3000"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754298418083-43138.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹3000</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Silk Kanjeevaram Saree" 
+                        data-price="3000"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754298418083-43138.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 11-->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1666340222119-165878.jpg" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Designer Kanjeevaram Saree" data-price="5500" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1666340222119-165878.jpg">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Designer Kanjeevaram Saree" 
+                            data-price="5500"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1666340222119-165878.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹5500</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Designer Kanjeevaram Saree" 
+                        data-price="5500"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1666340222119-165878.jpg">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1756298397819-24687.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Bridal Kanjeevaram Saree" data-price="3750" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1756298397819-24687.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Bridal Kanjeevaram Saree" 
+                            data-price="3750"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1756298397819-24687.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹3750</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Bridal Kanjeevaram Saree" 
+                        data-price="3750"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1756298397819-24687.webp">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section four -->
+
+<section>
+    <div class="container-fluid" style="margin-top: 150px;">
+        <div class="row g-4">
+            <!-- Product 13 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1680614464497-59927.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Traditional Kanjeevaram Saree" data-price="5000" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1680614464497-59927.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Traditional Kanjeevaram Saree" 
+                            data-price="5000"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1680614464497-59927.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹5000</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Traditional Kanjeevaram Saree" 
+                        data-price="5000"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1680614464497-59927.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 14 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754304791861-231952.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Silk Kanjeevaram Saree" data-price="4000" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754304791861-231952.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Silk Kanjeevaram Saree" 
+                            data-price="4000"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754304791861-231952.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹4000</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Silk Kanjeevaram Saree" 
+                        data-price="4000"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754304791861-231952.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 15 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754301280671-428847.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Designer Kanjeevaram Saree" data-price="8000" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754301280671-428847.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Designer Kanjeevaram Saree" 
+                            data-price="8000"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754301280671-428847.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹8000</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Designer Kanjeevaram Saree" 
+                        data-price="8000"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754301280671-428847.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 16 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1729762147797-198453.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Bridal Kanjeevaram Saree" data-price="7500" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1729762147797-198453.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Bridal Kanjeevaram Saree" 
+                            data-price="7500"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1729762147797-198453.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹7500</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Bridal Kanjeevaram Saree" 
+                        data-price="7500"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1729762147797-198453.webp">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section five -->
+
+<section>
+    <div class="container-fluid" style="margin-top: 150px;">
+        <div class="row g-4">
+            <!-- Product 17 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1746536376338-1924.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Traditional Kanjeevaram Saree" data-price="6500" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1746536376338-1924.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Traditional Kanjeevaram Saree" 
+                            data-price="6500"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1746536376338-1924.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹6500</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Traditional Kanjeevaram Saree" 
+                        data-price="6500"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1746536376338-1924.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 18 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1744791013602-871575.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Silk Kanjeevaram Saree" data-price="7370" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1744791013602-871575.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Silk Kanjeevaram Saree" 
+                            data-price="7370"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1744791013602-871575.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹7370</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Silk Kanjeevaram Saree" 
+                        data-price="7370"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1744791013602-871575.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 19 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1734768013861-531278.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Designer Kanjeevaram Saree" data-price="8500" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1734768013861-531278.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Designer Kanjeevaram Saree" 
+                            data-price="8500"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1734768013861-531278.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹8500</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Designer Kanjeevaram Saree" 
+                        data-price="8500"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1734768013861-531278.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 20 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1751093695921-427144.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Bridal Kanjeevaram Saree" data-price="7580" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1751093695921-427144.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Bridal Kanjeevaram Saree" 
+                            data-price="7580"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1751093695921-427144.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹7580</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Bridal Kanjeevaram Saree" 
+                        data-price="7580"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1751093695921-427144.webp">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section six -->
+
+<section>
+    <div class="container-fluid" style="margin-top: 150px;">
+        <div class="row g-4">
+            <!-- Product 21 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754288733374-749693.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Traditional Kanjeevaram Saree" data-price="9500" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754288733374-749693.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Traditional Kanjeevaram Saree" 
+                            data-price="9500"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754288733374-749693.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹9500</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Traditional Kanjeevaram Saree" 
+                        data-price="9500"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1754288733374-749693.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 22 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1711177921387-536886.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Silk Kanjeevaram Saree" data-price="9000" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1711177921387-536886.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Silk Kanjeevaram Saree" 
+                            data-price="9000"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1711177921387-536886.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹9000</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Silk Kanjeevaram Saree" 
+                        data-price="9000"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1711177921387-536886.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 23 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1709991516711-869971.webp" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Designer Kanjeevaram Saree" data-price="5500" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1709991516711-869971.webp">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Designer Kanjeevaram Saree" 
+                            data-price="5500"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1709991516711-869971.webp">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹5500</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Designer Kanjeevaram Saree" 
+                        data-price="5500"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1709991516711-869971.webp">View Details</button>
+                </div>
+            </div>
+
+            <!-- Product 24 -->
+            <div class="col-12 col-md-6 col-lg-3 product-card">
+                <div class="hover-card" style="width: 24rem; position: relative;">
+                    <img src="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1675678439679-260802.jpg" class="card-img-top rounded" alt="Kanjeevaram Saree">
+                    <!-- Wishlist Heart Button -->
+                    <div class="wishlist-heart" data-name="Bridal Kanjeevaram Saree" data-price="7500" data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1675678439679-260802.jpg">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <!-- Overlay Add to Cart button -->
+                    <div class="overlay-btn">
+                        <button class="btn btn-outline-secondary add-to-cart w-100 p-3" 
+                            data-name="Bridal Kanjeevaram Saree" 
+                            data-price="7500"
+                            data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1675678439679-260802.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="price-tag m-2">₹7500</h5>
+                    <button class="btn btn-success rounded w-50 my-2 view-product-btn" 
+                        data-name="Bridal Kanjeevaram Saree" 
+                        data-price="7500"
+                        data-image="https://yourstore.io/api/uploads/5d30013a5c83a702392c4c8b/products/1675678439679-260802.jpg">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>    
+        <div class="modal fade border-5" id="formId" tabindex="-1" aria-labelledby="formIdLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Header -->
+                    <div class="modal-header bg-light mb-3 justify-content-center">
+                        <h5 class="modal-title text-dark" id="formIdLabel">NEW TO FABRIZIA?</h5>
+                        <button type="button" class="btn-close position-absolute end-0 me-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- Body with row -->
+                    <div class="modal-body">
+                        <div class="row align-items-center">
+                            <!-- Form on the left -->
+                            <div class="col-md-7">
+                                <form id="loginForm" action="login" method="POST">
+                                    <!-- Email -->
+                                    <div class="form-floating mb-3 position-relative">
+                                        <i class="fas fa-envelope input-icon"></i>
+                                        <input type="text" class="form-control" id="emailogin" placeholder="name@exam" autocomplete="off" required>
+                                        <label for="emailogin" class="floating-label">Email address</label>
+                                        <p id="emailV" class="small text-danger mt-1"></p>
+                                    </div>
+
+                                    <!-- Password -->
+                                    <div class="form-floating mb-3 position-relative">
+                                        <i class="fas fa-lock input-icon"></i>
+                                        <input type="password" class="form-control" id="passlogin" placeholder="Password" autocomplete="new-password" required>
+                                        <button type="button" class="password-toggle" id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <label for="passlogin" class="floating-label">Password</label>
+                                        <p id="passV" class="small text-danger mt-1"></p>
+                                    </div>
+
+                                    <!-- Remember me & Forgot password -->
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="remember">
+                                            <label class="form-check-label" for="remember">Remember me</label>
+                                        </div>
+                                        <a href="#" class="text-decoration-none small">Forgot password?</a>
+                                    </div>
+
+                                    <!-- Button -->
+                                    <button type="submit" class="btn btn-danger w-100 mb-3" id="signLogin">Sign In</button>
+                                    
+                                    <!-- Divider -->
+                                    <div class="divider">
+                                        <span class="divider-text">Or continue with</span>
+                                    </div>
+                                    
+                                    <!-- Social login -->
+                                    <div class="social-login">
+                                        <a href="#" class="social-btn facebook">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a href="#" class="social-btn google">
+                                            <i class="fab fa-google"></i>
+                                        </a>
+                                        <a href="#" class="social-btn twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Image on the right -->
+                            <div class="col-md-5 text-center bg-white">
+                                <img src="/image/fab.jpg" alt="fab" class="img-fluid rounded">
+                                <!-- <div class="mt-3">
+                                    <h5>Join Our Community</h5>
+                                    <p class="small text-muted">Discover exclusive offers and personalized experiences</p>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="modal-footer border-0 justify-content-center bg-light">
+                        <h6 class="mb-0">
+                            Don't have an account? 
+                            <button class="btn btn-light p-0 ms-1" data-bs-toggle="modal" data-bs-target="#modalExa">Register Here</button>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Registration Modal -->
+  <section>
+    <div class="modal signinmodal fade" id="modalExa">
+      <div class="modal-dialog" style="max-width: 900px;">
+        <div class="modal-content" id="modalExample">
+          <div class="modal-header d-flex justify-content-center bg-light">
+            <h3 class="fw-bold">Sign Up</h3>
+            <button type="button" class="btn-close position-absolute end-0 me-2" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-5">
+                <form action="Feb" id="F1">
+                  <div class="mb-3">
+                    <label for="username" class="form-label text-white">Name</label>
+                    <input type="text" name="username" class="form-control" id="name" placeholder="Enter Your Name">
+                    <p id="nameus"></p>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="mobile" class="form-label text-white">Mobile No</label>
+                    <input type="number" name="mobile" class="form-control" id="num" placeholder="+91">
+                    <p id="mobile"></p>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label text-white">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com">
+                    <p id="mail"></p>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="pass" class="form-label text-white">Password</label>
+                    <input type="password" name="password" class="form-control" id="pass">
+                    <p id="passwordp"></p>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="repass" class="form-label text-white">ReType Password</label>
+                    <input type="password" name="repassword" class="form-control" id="repass">
+                    <p id="repasswordp"></p> 
+                  </div>
+                  
+                  <div class="d-grid">
+                    <button type="submit" id="btn" class="btn btn-success">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
+
+<footer class="bg-dark text-light pt-5 pb-3 mt-5">
+  <div class="container">
+    <div class="row">
+
+      <!-- About Section -->
+      <div class="col-md-4 mb-4">
+        <h5 class="fw-bold mb-3">Fabrizia</h5>
+        <p style="font-family: 'Poppins', sans-serif; font-size: 0.95rem;">
+          Fabrizia brings you the world's finest collection of Indian ethnic wear — Sarees, Salwar Kameez & Lehengas. 
+          Our mission is to preserve tradition while embracing modern elegance.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-2 mb-4">
+        <h6 class="fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="Sale.html" class="text-light text-decoration-none">Home</a></li>
+          <li><a href="about.html" class="text-light text-decoration-none">About Us</a></li>
+          <li><a href="contact.html" class="text-light text-decoration-none">Contact</a></li>
+          <li><a href="#" class="text-light text-decoration-none">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- Categories -->
+      <div class="col-md-3 mb-4">
+        <h6 class="fw-bold mb-3">Popular Categories</h6>
+        <ul class="list-unstyled">
+          <li><a href="kanjivara.html" class="text-light text-decoration-none">Kanjeevaram</a></li>
+          <li><a href="mysore.html" class="text-light text-decoration-none">Mysore Silk</a></li>
+          <li><a href="banarasi.html" class="text-light text-decoration-none">Banarasi</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Paithani</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact & Social -->
+      <div class="col-md-3 mb-4">
+        <h6 class="fw-bold mb-3">Get in Touch</h6>
+        <p class="mb-1"><i class="fa-solid fa-location-dot me-2"></i> Bengaluru, India</p>
+        <p class="mb-1"><i class="fa-solid fa-envelope me-2"></i> support@fabrizia.in</p>
+        <p class="mb-3"><i class="fa-solid fa-phone me-2"></i> +91 98765 43210</p>
+
+        <!-- Social Media -->
+        <div>
+          <a href="#" class="text-light fs-5 me-3"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-light fs-5 me-3"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-light fs-5 me-3"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-light fs-5"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+    </div>
+    <hr class="border-light">
+    <div class="text-center">
+      <p class="mb-0">© 2025 Fabrizia. All Rights Reserved. | Designed with ❤ in India</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Main application object
+    const app = {
+        cart: [],
+        wishlist: [],
+        history: [],
+        
+        init: function() {
+            // Load data from localStorage
+            this.loadData();
+            
+            // Initialize UI
+            this.updateCartCount();
+            this.updateWishlistCount();
+            this.updateHistoryCount();
+            this.initializeWishlistHearts();
+            this.updateCartModal();
+            this.updateWishlistModal();
+            this.updateHistoryModal();
+            
+            // Set up event listeners
+            this.setupEventListeners();
+        },
+        
+        loadData: function() {
+            // Load data from localStorage with error handling
+            try {
+                this.cart = JSON.parse(localStorage.getItem('cart')) || [];
+                this.wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                this.history = JSON.parse(localStorage.getItem('history')) || [];
+            } catch (e) {
+                console.error('Error loading data from localStorage:', e);
+                this.cart = [];
+                this.wishlist = [];
+                this.history = [];
+            }
+        },
+        
+        saveData: function() {
+            // Save data to localStorage with error handling
+            try {
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+                localStorage.setItem('wishlist', JSON.stringify(this.wishlist));
+                localStorage.setItem('history', JSON.stringify(this.history));
+            } catch (e) {
+                console.error('Error saving data to localStorage:', e);
+            }
+        },
+        
+        updateCartCount: function() {
+            const cartCount = document.getElementById('cartCount');
+            if (cartCount) {
+                cartCount.textContent = this.cart.reduce((total, item) => total + item.quantity, 0);
+            }
+        },
+        
+        updateWishlistCount: function() {
+            const wishlistCount = document.getElementById('wishlistCount');
+            if (wishlistCount) {
+                wishlistCount.textContent = this.wishlist.length;
+            }
+        },
+        
+        updateHistoryCount: function() {
+            const historyCount = document.getElementById('historyCount');
+            if (historyCount) {
+                historyCount.textContent = this.history.length;
+            }
+        },
+        
+        setupEventListeners: function() {
+            // Add to cart buttons
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+                    const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+                    this.addToCart(
+                        button.getAttribute('data-name'),
+                        parseInt(button.getAttribute('data-price')),
+                        button.getAttribute('data-image')
+                    );
+                }
+                
+                // View product details buttons
+                if (e.target.classList.contains('view-product-btn') || e.target.closest('.view-product-btn')) {
+                    const button = e.target.classList.contains('view-product-btn') ? e.target : e.target.closest('.view-product-btn');
+                    this.showProductDetails(
+                        button.getAttribute('data-name'),
+                        button.getAttribute('data-price'),
+                        button.getAttribute('data-image')
+                    );
+                }
+            });
+            
+            // Buy now button in product modal
+            const buyNowBtn = document.getElementById('buyNowBtn');
+            if (buyNowBtn) {
+                buyNowBtn.addEventListener('click', () => {
+                    const name = buyNowBtn.getAttribute('data-name');
+                    const price = parseInt(buyNowBtn.getAttribute('data-price'));
+                    const image = buyNowBtn.getAttribute('data-image');
+                    
+                    this.addToCart(name, price, image);
+                    
+                    // Close product modal
+                    const productModal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
+                    if (productModal) {
+                        productModal.hide();
+                    }
+                });
+            }
+            
+            // Proceed to checkout button
+const cartBody = document.getElementById('cartModalBody');
+const proceedCheckoutBtn = document.getElementById('proceedCheckoutBtn');
+const cartTotalAmount = document.getElementById('cartTotalAmount');
+
+proceedCheckoutBtn.addEventListener('click', () => {
+  // Check if there are items or if total is greater than ₹0
+  const hasItems = cartBody && cartBody.children.length > 0;
+  const totalValue = parseFloat(cartTotalAmount.textContent.replace('₹', '').trim()) || 0;
+
+  if (hasItems && totalValue > 0) {
+    // Proceed if the cart has items
+    window.location.href = "pay.html";
+  } else {
+    // Show Bootstrap alert message inside the modal (optional)
+    showCartAlert("Your cart is empty! Please add items before proceeding to checkout.");
+  }
+});
+
+// Optional: Function to show alert inside modal
+function showCartAlert(message) {
+  // Remove existing alert if any
+  const existingAlert = document.querySelector('.cart-alert');
+  if (existingAlert) existingAlert.remove();
+
+  // Create a new alert element
+  const alertDiv = document.createElement('div');
+  alertDiv.className = 'alert alert-warning cart-alert mt-2';
+  alertDiv.textContent = message;
+
+  // Insert it above the footer or inside modal body
+  cartBody.appendChild(alertDiv);
+
+  // Auto-hide after 3 seconds
+  setTimeout(() => alertDiv.remove(), 3000);
+}
+
+            // Clear wishlist button
+            const clearWishlistBtn = document.getElementById('clearWishlistBtn');
+            if (clearWishlistBtn) {
+                clearWishlistBtn.addEventListener('click', () => {
+                    this.clearWishlist();
+                });
+            }
+            
+            // Clear history button
+            const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+            if (clearHistoryBtn) {
+                clearHistoryBtn.addEventListener('click', () => {
+                    this.clearHistory();
+                });
+            }
+            
+            // Modal show events to update content
+            const cartModal = document.getElementById('cartModal');
+            if (cartModal) {
+                cartModal.addEventListener('show.bs.modal', () => {
+                    this.updateCartModal();
+                });
+            }
+            
+            const wishlistModal = document.getElementById('wishlistModal');
+            if (wishlistModal) {
+                wishlistModal.addEventListener('show.bs.modal', () => {
+                    this.updateWishlistModal();
+                });
+            }
+            
+            const historyModal = document.getElementById('historyModal');
+            if (historyModal) {
+                historyModal.addEventListener('show.bs.modal', () => {
+                    this.updateHistoryModal();
+                });
+            }
+        },
+        
+        addToCart: function(name, price, image) {
+            // Check if item already exists in cart
+            const existingItemIndex = this.cart.findIndex(item => 
+                item.name === name && item.price === price && item.image === image
+            );
+            
+            if (existingItemIndex === -1) {
+                // Add new item to cart
+                this.cart.push({ 
+                    name, 
+                    price, 
+                    image,
+                    quantity: 1
+                });
+                this.showToast('Item added to cart!');
+            } else {
+                // Increase quantity if item already exists
+                this.cart[existingItemIndex].quantity += 1;
+                this.showToast('Item quantity updated in cart!');
+            }
+            
+            // Update localStorage and UI
+            this.saveData();
+            this.updateCartCount();
+            this.updateCartModal();
+        },
+        
+        showProductDetails: function(name, price, image) {
+            // Set modal content
+            document.getElementById('productModalTitle').textContent = name;
+            document.getElementById('productModalPrice').textContent = '₹' + price;
+            document.getElementById('productModalImage').src = image;
+            
+            // Set buy now button data
+            const buyNowBtn = document.getElementById('buyNowBtn');
+            if (buyNowBtn) {
+                buyNowBtn.setAttribute('data-name', name);
+                buyNowBtn.setAttribute('data-price', price);
+                buyNowBtn.setAttribute('data-image', image);
+            }
+            
+            // Show modal
+            const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+            productModal.show();
+        },
+        
+        updateCartModal: function() {
+            const modalBody = document.getElementById('cartModalBody');
+            const totalAmount = document.getElementById('cartTotalAmount');
+            
+            if (!modalBody || !totalAmount) return;
+            
+            if (this.cart.length === 0) {
+                modalBody.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h4>Your cart is empty</h4>
+                        <p>Start adding items to your cart!</p>
+                    </div>
+                `;
+                totalAmount.textContent = '₹0';
+            } else {
+                let total = 0;
+                modalBody.innerHTML = this.cart.map((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    return `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <div class="cart-item-name">${item.name}</div>
+                                <div class="cart-item-price">₹${item.price}</div>
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn decrease-quantity" data-index="${index}">-</button>
+                                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-index="${index}">
+                                    <button class="quantity-btn increase-quantity" data-index="${index}">+</button>
+                                </div>
+                            </div>
+                            <div class="cart-item-actions">
+                                <button class="btn btn-cart-action btn-remove-cart" data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                totalAmount.textContent = '₹' + total;
+                
+                // Add event listeners to quantity buttons
+                modalBody.querySelectorAll('.decrease-quantity').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = parseInt(e.target.getAttribute('data-index'));
+                        this.updateQuantity(index, -1);
+                    });
+                });
+                
+                modalBody.querySelectorAll('.increase-quantity').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = parseInt(e.target.getAttribute('data-index'));
+                        this.updateQuantity(index, 1);
+                    });
+                });
+                
+                modalBody.querySelectorAll('.quantity-input').forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        const index = parseInt(e.target.getAttribute('data-index'));
+                        const newQuantity = parseInt(e.target.value);
+                        if (newQuantity > 0) {
+                            this.cart[index].quantity = newQuantity;
+                            this.saveData();
+                            this.updateCartModal();
+                        }
+                    });
+                });
+                
+                modalBody.querySelectorAll('.btn-remove-cart').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = parseInt(e.target.getAttribute('data-index'));
+                        this.removeFromCart(index);
+                    });
+                });
+            }
+        },
+        
+        updateQuantity: function(index, change) {
+            const newQuantity = this.cart[index].quantity + change;
+            if (newQuantity > 0) {
+                this.cart[index].quantity = newQuantity;
+                this.saveData();
+                this.updateCartModal();
+                this.updateCartCount();
+            }
+        },
+        
+        removeFromCart: function(index) {
+            this.cart.splice(index, 1);
+            this.saveData();
+            this.updateCartCount();
+            this.updateCartModal();
+            this.showToast('Item removed from cart!');
+        },
+        
+        proceedToCheckout: function() {
+            if (this.cart.length > 0) {
+                // Add cart items to history
+                this.cart.forEach(item => {
+                    const historyItem = {
+                        name: item.name,
+                        price: item.price,
+                        image: item.image,
+                        quantity: item.quantity,
+                        date: new Date().toLocaleDateString('en-IN', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric'
+                        })
+                    };
+                    this.history.push(historyItem);
+                });
+                
+                // Update history in localStorage
+                this.saveData();
+                this.updateHistoryCount();
+                this.updateHistoryModal();
+                
+                // Store cart data for checkout page
+                try {
+                    localStorage.setItem('checkoutCart', JSON.stringify(this.cart));
+                } catch (e) {
+                    console.error('Error saving checkout cart:', e);
+                }
+                
+                // For demo purposes, just show a message
+                this.showToast('Proceeding to checkout! In a real app, this would redirect to the checkout page.');
+                
+                // Clear cart after checkout
+                this.cart = [];
+                this.saveData();
+                this.updateCartCount();
+                this.updateCartModal();
+            } else {
+                this.showToast('Your cart is empty!');
+            }
+        },
+        
+        initializeWishlistHearts: function() {
+            document.querySelectorAll('.wishlist-heart').forEach(heart => {
+                const name = heart.getAttribute('data-name');
+                const price = heart.getAttribute('data-price');
+                const image = heart.getAttribute('data-image');
+                
+                // Check if item is already in wishlist
+                const isInWishlist = this.wishlist.some(item => 
+                    item.name === name && item.price === parseInt(price) && item.image === image
+                );
+                
+                if (isInWishlist) {
+                    heart.classList.add('active');
+                    heart.innerHTML = '<i class="fa-solid fa-heart"></i>';
+                } else {
+                    heart.classList.remove('active');
+                    heart.innerHTML = '<i class="fa-regular fa-heart"></i>';
+                }
+                
+                // Add click event listener
+                heart.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const name = heart.getAttribute('data-name');
+                    const price = heart.getAttribute('data-price');
+                    const image = heart.getAttribute('data-image');
+                    
+                    this.toggleWishlistItem(name, parseInt(price), image, heart);
+                });
+            });
+        },
+        
+        toggleWishlistItem: function(name, price, image, heartElement) {
+            const item = { name, price, image };
+            const itemIndex = this.wishlist.findIndex(wishlistItem => 
+                wishlistItem.name === name && wishlistItem.price === price && wishlistItem.image === image
+            );
+            
+            if (itemIndex === -1) {
+                // Add to wishlist
+                this.wishlist.push(item);
+                if (heartElement) {
+                    heartElement.classList.add('active', 'animate');
+                    heartElement.innerHTML = '<i class="fa-solid fa-heart"></i>';
+                    
+                    setTimeout(() => {
+                        heartElement.classList.remove('animate');
+                    }, 500);
+                }
+                this.showToast('Item added to wishlist!');
+            } else {
+                // Remove from wishlist
+                this.wishlist.splice(itemIndex, 1);
+                if (heartElement) {
+                    heartElement.classList.remove('active');
+                    heartElement.innerHTML = '<i class="fa-regular fa-heart"></i>';
+                }
+                this.showToast('Item removed from wishlist!');
+            }
+            
+            this.saveData();
+            this.updateWishlistCount();
+            this.updateWishlistModal();
+        },
+        
+        updateWishlistModal: function() {
+            const modalBody = document.getElementById('wishlistModalBody');
+            
+            if (!modalBody) return;
+            
+            if (this.wishlist.length === 0) {
+                modalBody.innerHTML = `
+                    <div class="wishlist-empty">
+                        <i class="fas fa-heart"></i>
+                        <h4>Your wishlist is empty</h4>
+                        <p>Start adding items you love to your wishlist!</p>
+                    </div>
+                `;
+            } else {
+                modalBody.innerHTML = this.wishlist.map((item, index) => {
+                    return `
+                        <div class="wishlist-item" style="animation-delay: ${index * 0.1}s">
+                            <img src="${item.image}" alt="${item.name}" class="wishlist-item-img">
+                            <div class="wishlist-item-details">
+                                <div class="wishlist-item-name">${item.name}</div>
+                                <div class="wishlist-item-price">₹${item.price}</div>
+                            </div>
+                            <div class="wishlist-item-actions">
+                                <button class="btn btn-cart-action btn-remove-cart remove-from-wishlist" data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="btn btn-cart-action btn-continue-shopping add-to-cart-from-wishlist" 
+                                    data-name="${item.name}" 
+                                    data-price="${item.price}"
+                                    data-image="${item.image}">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                // Add event listeners to remove buttons
+                modalBody.querySelectorAll('.remove-from-wishlist').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = parseInt(e.target.getAttribute('data-index'));
+                        this.removeFromWishlist(index);
+                    });
+                });
+                
+                // Add event listeners to add to cart buttons
+                modalBody.querySelectorAll('.add-to-cart-from-wishlist').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const name = button.getAttribute('data-name');
+                        const price = parseInt(button.getAttribute('data-price'));
+                        const image = button.getAttribute('data-image');
+                        
+                        this.addToCart(name, price, image);
+                        this.showToast('Item added to cart from wishlist!');
+                    });
+                });
+            }
+        },
+        
+        removeFromWishlist: function(index) {
+            this.wishlist.splice(index, 1);
+            this.saveData();
+            this.updateWishlistCount();
+            this.updateWishlistModal();
+            this.initializeWishlistHearts();
+            this.showToast('Item removed from wishlist!');
+        },
+        
+        clearWishlist: function() {
+            this.wishlist = [];
+            this.saveData();
+            this.updateWishlistCount();
+            this.updateWishlistModal();
+            this.initializeWishlistHearts();
+            this.showToast('Wishlist cleared!');
+        },
+        
+        updateHistoryModal: function() {
+            const modalBody = document.getElementById('historyModalBody');
+            
+            if (!modalBody) return;
+            
+            if (this.history.length === 0) {
+                modalBody.innerHTML = `
+                    <div class="history-empty">
+                        <i class="fas fa-clock-rotate-left"></i>
+                        <h4>Your purchase history is empty</h4>
+                        <p>Your completed purchases will appear here!</p>
+                    </div>
+                `;
+            } else {
+                modalBody.innerHTML = this.history.map((item, index) => {
+                    return `
+                        <div class="history-item" style="animation-delay: ${index * 0.1}s">
+                            <img src="${item.image}" alt="${item.name}" class="history-item-img">
+                            <div class="history-item-details">
+                                <div class="history-item-name">${item.name}</div>
+                                <div class="history-item-price">₹${item.price} x ${item.quantity}</div>
+                                <div class="history-item-date">Purchased on: ${item.date}</div>
+                            </div>
+                            <div class="history-item-actions">
+                                <button class="btn btn-cart-action btn-continue-shopping add-to-cart-from-history" 
+                                    data-name="${item.name}" 
+                                    data-price="${item.price}"
+                                    data-image="${item.image}">
+                                    <i class="fas fa-shopping-bag"></i> Buy Again
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                // Add event listeners to buy again buttons
+                modalBody.querySelectorAll('.add-to-cart-from-history').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const name = button.getAttribute('data-name');
+                        const price = parseInt(button.getAttribute('data-price'));
+                        const image = button.getAttribute('data-image');
+                        
+                        this.addToCart(name, price, image);
+                        this.showToast('Item added to cart from history!');
+                    });
+                });
+            }
+        },
+        
+        clearHistory: function() {
+            this.history = [];
+            this.saveData();
+            this.updateHistoryCount();
+            this.updateHistoryModal();
+            this.showToast('Purchase history cleared!');
+        },
+        
+        showToast: function(message) {
+            const toast = document.getElementById('toastNotification');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            if (!toast || !toastMessage) return;
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    };
+    
+    // Initialize the app when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        app.init();
+        
+        // Registration form handling
+        const registerForm = document.getElementById('F1');
+        if (registerForm) {
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // For demo purposes, just show success message
+                app.showToast('Registration successful!');
+                
+                // Hide registration modal
+                const registerModalEl = document.getElementById('modalExa');
+                const registerModal = bootstrap.Modal.getInstance(registerModalEl);
+                if (registerModal) {
+                    registerModal.hide();
+                }
+                
+                // Show login modal after a delay
+                setTimeout(() => {
+                    const loginModalEl = document.getElementById('formId');
+                    const loginModal = new bootstrap.Modal(loginModalEl);
+                    loginModal.show();
+                }, 500);
+            });
+        }
+        
+        // Login form handling
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // For demo purposes, just show success message
+                app.showToast('Login successful!');
+                
+                // Hide login modal
+                const loginModalEl = document.getElementById('formId');
+                const loginModal = bootstrap.Modal.getInstance(loginModalEl);
+                if (loginModal) {
+                    loginModal.hide();
+                }
+            });
+        }
+        
+        // Password toggle functionality
+        const togglePassword = document.getElementById('togglePassword');
+        if (togglePassword) {
+            togglePassword.addEventListener('click', function() {
+                const passwordInput = document.getElementById('passlogin');
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+        }
+    });
+    
+</script>
+</body>
+</html>

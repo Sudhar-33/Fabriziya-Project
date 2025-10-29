@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #36b9cc;
+            --success-color: #1cc88a;
+            --warning-color: #f6c23e;
+            --danger-color: #e74a3b;
+            --light-bg: #f8f9fc;
+            --dark-text: #5a5c69;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .login-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            max-width: 450px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .login-header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .login-header h2 {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .login-body {
+            padding: 30px;
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #e3e6f0;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+        }
+        
+        .input-group-text {
+            background-color: #f8f9fc;
+            border: 1px solid #e3e6f0;
+            border-right: none;
+        }
+        
+        .form-control:focus + .input-group-text {
+            border-color: var(--primary-color);
+        }
+        
+        .btn-login {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--dark-text);
+        }
+        
+        .form-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .validation-message {
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: block;
+        }
+        
+        .password-toggle {
+            cursor: pointer;
+            background-color: #f8f9fc;
+            border: 1px solid #e3e6f0;
+            border-left: none;
+        }
+        
+        .password-toggle:hover {
+            background-color: #e9ecef;
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .facebook {
+            background-color: #3b5998;
+        }
+        
+        .google {
+            background-color: #dd4b39;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .password-strength {
+            height: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            transition: all 0.3s;
+        }
+        
+        .strength-weak {
+            background-color: var(--danger-color);
+            width: 25%;
+        }
+        
+        .strength-medium {
+            background-color: var(--warning-color);
+            width: 50%;
+        }
+        
+        .strength-strong {
+            background-color: var(--success-color);
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="logo">
+                    <i class="fas fa-user-lock"></i>
+                </div>
+                <h2>Welcome Back</h2>
+                <p class="mb-0">Sign in to your account</p>
+            </div>
+            
+            <div class="login-body">
+                <form id="loginForm" action="#">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        </div>
+                        <span id="emailError" class="validation-message"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                            <span class="input-group-text password-toggle" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        <div id="passwordStrength" class="password-strength"></div>
+                        <span id="passwordError" class="validation-message"></span>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-login mb-3" id="submitBtn">
+                        <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                    </button>
+                    
+                    <div class="social-login">
+                        <a href="#" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </form>
+                
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#">Sign up</a></p>
+                    <p><a href="#">Forgot your password?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordStrength = document.getElementById('passwordStrength');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Email validation regex
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            // Password strength checker
+            function checkPasswordStrength(password) {
+                let strength = 0;
+                
+                if (password.length >= 8) strength++;
+                if (password.match(/[a-z]+/)) strength++;
+                if (password.match(/[A-Z]+/)) strength++;
+                if (password.match(/[0-9]+/)) strength++;
+                if (password.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/)) strength++;
+                
+                return strength;
+            }
+            
+            // Update password strength indicator
+            passwordInput.addEventListener('input', function() {
+                const strength = checkPasswordStrength(this.value);
+                passwordStrength.className = 'password-strength';
+                
+                if (this.value.length === 0) {
+                    passwordStrength.style.width = '0';
+                    return;
+                }
+                
+                if (strength <= 2) {
+                    passwordStrength.classList.add('strength-weak');
+                } else if (strength <= 4) {
+                    passwordStrength.classList.add('strength-medium');
+                } else {
+                    passwordStrength.classList.add('strength-strong');
+                }
+            });
+            
+            // Toggle password visibility
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+            });
+            
+            // Form submission handler
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                
+                // Email validation
+                const email = emailInput.value.trim();
+                if (email === '') {
+                    emailError.textContent = 'Please enter your email address';
+                    emailError.style.color = 'var(--danger-color)';
+                    emailInput.classList.add('is-invalid');
+                    isValid = false;
+                } else if (!emailRegex.test(email)) {
+                    emailError.textContent = 'Please enter a valid email address (e.g., name@example.com)';
+                    emailError.style.color = 'var(--danger-color)';
+                    emailInput.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    emailError.textContent = '';
+                    emailInput.classList.remove('is-invalid');
+                    emailInput.classList.add('is-valid');
+                }
+                
+                // Password validation
+                const password = passwordInput.value.trim();
+                if (password === '') {
+                    passwordError.textContent = 'Please enter your password';
+                    passwordError.style.color = 'var(--danger-color)';
+                    passwordInput.classList.add('is-invalid');
+                    isValid = false;
+                } else if (password.length < 6) {
+                    passwordError.textContent = 'Password must be at least 6 characters long';
+                    passwordError.style.color = 'var(--danger-color)';
+                    passwordInput.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    passwordError.textContent = '';
+                    passwordInput.classList.remove('is-invalid');
+                    passwordInput.classList.add('is-valid');
+                }
+                
+                // If form is valid, show success message
+                if (isValid) {
+                    // Change button to loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Signing In...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate API call
+                    setTimeout(function() {
+                        // Show success alert
+                        const alertDiv = document.createElement('div');
+                        alertDiv.className = 'alert alert-success alert-dismissible fade show mt-3';
+                        alertDiv.innerHTML = `
+                            <strong>Success!</strong> You have been logged in successfully.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        `;
+                        loginForm.appendChild(alertDiv);
+                        
+                        // Reset form
+                        loginForm.reset();
+                        emailInput.classList.remove('is-valid');
+                        passwordInput.classList.remove('is-valid');
+                        passwordStrength.style.width = '0';
+                        
+                        // Reset button
+                        submitBtn.innerHTML = '<i class="fas fa-sign-in-alt me-2"></i>Sign In';
+                        submitBtn.disabled = false;
+                    }, 1500);
+                }
+            });
+            
+            // Real-time validation
+            emailInput.addEventListener('input', function() {
+                const email = this.value.trim();
+                
+                if (email === '') {
+                    emailError.textContent = '';
+                    this.classList.remove('is-invalid', 'is-valid');
+                } else if (!emailRegex.test(email)) {
+                    emailError.textContent = 'Please enter a valid email address';
+                    emailError.style.color = 'var(--danger-color)';
+                    this.classList.add('is-invalid');
+                    this.classList.remove('is-valid');
+                } else {
+                    emailError.textContent = '';
+                    this.classList.remove('is-invalid');
+                    this.classList.add('is-valid');
+                }
+            });
+            
+            passwordInput.addEventListener('input', function() {
+                const password = this.value.trim();
+                
+                if (password === '') {
+                    passwordError.textContent = '';
+                    this.classList.remove('is-invalid', 'is-valid');
+                } else if (password.length < 6) {
+                    passwordError.textContent = 'Password must be at least 6 characters long';
+                    passwordError.style.color = 'var(--danger-color)';
+                    this.classList.add('is-invalid');
+                    this.classList.remove('is-valid');
+                } else {
+                    passwordError.textContent = '';
+                    this.classList.remove('is-invalid');
+                    this.classList.add('is-valid');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

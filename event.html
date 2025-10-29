@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EventListener Example</title>
+  <style>
+    #container {
+      padding: 20px;
+      background: lightblue;
+      width: 250px;
+      margin-top: 20px;
+    }
+
+    #btn {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>JavaScript HTML DOM addEventListener() Example</h2>
+
+  <div id="container">
+    <button id="btn">Click Me</button>
+  </div>
+
+  <script>
+    // get the elements
+    const container = document.getElementById('container');
+    const btn = document.getElementById('btn');
+
+    // click on the container
+    container.addEventListener('click', function (e) {
+      console.log('Container clicked');
+    });
+
+    // click on the button
+    btn.addEventListener('click', function (e) {
+      console.log('Button clicked');
+      e.stopPropagation(); // prevent event from bubbling to container
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Common Event Types Example</title>
+  <style>
+    body{
+     text-align: center;
+    }
+    #hoverBox{
+      margin-left: 750px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Common Event Types Demo</h2>
+
+<button id="clickBtn">Click Me</button><br><br><br>
+<button id="dblClickBtn">Double Click Me</button><br>
+<div id="hoverBox" style="width:150px;height:50px;background:lightblue;margin-top:10px;text-align:center;line-height:50px;">
+  Hover over me
+</div>
+
+<input type="text" id="textInput" placeholder="Type something…" style="margin-top:10px;">
+<form id="myForm" style="margin-top:10px;">
+  <input type="text" name="username" placeholder="Enter name">
+  <button type="submit">Submit Form</button>
+</form>
+<div id="id3">
+  <input type="Text a name" id="id4">
+  <button id="id5">Click me</button>
+</div>
+
+
+<script>
+// Click event
+document.getElementById('clickBtn').addEventListener('click', function() {
+  alert('Button clicked!');
+
+});
+
+// Double-click event
+document.getElementById('dblClickBtn').addEventListener('dblclick', function() {
+  alert('Button double-clicked!');
+});
+
+//mouseover and mouseout
+const hoverBox = document.getElementById('hoverBox');
+hoverBox.addEventListener('mouseover', function() {
+  hoverBox.style.background = 'lightgreen';
+  hoverBox.textContent = 'Mouse Over!';
+});
+hoverBox.addEventListener('mouseout', function() {
+  hoverBox.style.background = 'lightblue';
+  hoverBox.textContent = 'Hover over me';
+});
+
+// Keydown and Keyup
+const textInput = document.getElementById('textInput');
+textInput.addEventListener('keydown', function(e) {
+  console.log('Key down:', e.key);
+});
+textInput.addEventListener('keyup', function(e) {
+  console.log('Key up:', e.key);
+});
+
+// input event
+textInput.addEventListener('input', function() {
+  console.log('Current value:', textInput.value);
+});
+
+// submit event
+document.getElementById('myForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // prevent page reload
+  alert('Form submitted!');
+});
+
+const text=document.getElementById("id4");
+const speakbtn=document.getElementById("id5");
+
+speakbtn.addEventListener('click',() => {
+  const msg=text.value;
+  const utteranc=new SpeechSynthesisUtterance(msg);
+  window.speechSynthesis.speak(utteranc);
+});
+
+// SpeechRecognitionAlternative
+// SpeechRecognitionResult               convert to the voice to text.
+// SpeechRecognitionResultList
+// SpeechSynthesisErrorEvent
+// SpeechSynthesisEvent                     convert to the text voice.
+// SpeechSynthesisVoice
+speakbtn
+</script>
+
+</body>
+</html>

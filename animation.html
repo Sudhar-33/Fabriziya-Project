@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       /* Animation */
+       /* it lets us animate the html elements without the help of java script */
+
+
+       #slide{
+          display: flex;
+          justify-content: center;
+          font-size:  2rem;
+
+          /* Syntax */
+          /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+         
+          animation: slideIn 3s ease-in infinite ;
+
+       }
+
+       @keyframes slideIn {
+           from{
+            transform: translateX(-200);
+           }
+           to{
+            transform: translateX(0);
+           }
+       }
+      
+       #zoom{
+         display: flex;
+          justify-content: center;
+          font-size:  2rem;
+        animation: zoomIn 1s ease-in infinite;
+       }
+
+       @keyframes zoomIn {
+         from{
+            transform: scale(0.5);
+         }
+         to{
+            transform: scale(1.0);
+         }
+       }
+
+
+    </style>
+</head>
+<body>
+    <h1 style="display: flex; justify-content: center;">Animations</h1>
+   <p id="slide">SlideIn</p>
+
+   <p id="zoom">ZoomIn</p>
+</body>
+</html>
